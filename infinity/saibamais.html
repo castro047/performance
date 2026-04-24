@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Infinity | 50% imagem + 50% texto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #eef2f8;
+            min-height: 100vh;
+        }
+
+        /* ===========================================
+           NAVBAR TRANSLÚCIDO (ADICIONADO)
+           =========================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 37, 55, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            padding: 0.9rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #d4e4f0 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo span {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.85);
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-links a i {
+            font-size: 0.8rem;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .btn-contato-nav {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .btn-contato-nav:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Menu Mobile */
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-icon span {
+            width: 25px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: 0.2s;
+        }
+
+        /* CONTAINER PRINCIPAL: OCUPA 100% DA LARGURA */
+        .split-50 {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+            padding-top: 72px; /* espaço para o navbar fixo */
+        }
+
+        /* DIV DA IMAGEM: 50% DE QUALQUER TELA */
+        .image-fifty {
+            flex: 1;
+            width: 50%;
+            background: linear-gradient(135deg, #07253a 0%, #0a334b 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        /* DIV DO TEXTO: 50% DE QUALQUER TELA */
+        .text-fifty {
+            flex: 1;
+            width: 50%;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        /* CONTEÚDO INTERNO DA IMAGEM */
+        .image-content {
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .icon-circle {
+            background: rgba(255,255,255,0.08);
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.8rem auto;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .icon-circle i {
+            font-size: 4.2rem;
+            color: #9ac7e8;
+        }
+
+        .bars {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 1.5rem 0;
+        }
+
+        .bars div {
+            width: 12px;
+            background: #2f7dab;
+            border-radius: 20px;
+        }
+
+        .bar1 { height: 32px; }
+        .bar2 { height: 52px; background: #479ac9; }
+        .bar3 { height: 78px; background: #66b3de; }
+        .bar4 { height: 48px; background: #479ac9; }
+        .bar5 { height: 28px; }
+
+        .image-tag {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: #bbd6f0;
+            text-transform: uppercase;
+            margin-top: 1rem;
+        }
+
+        .infinity-symbol {
+            font-size: 2rem;
+            color: rgba(255,255,245,0.12);
+            margin: 0.8rem 0;
+        }
+
+        .img-badge {
+            background: rgba(255,220,150,0.12);
+            display: inline-block;
+            padding: 0.35rem 1rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #ffdb8e;
+        }
+
+        /* CONTEÚDO DO TEXTO */
+        .text-content {
+            max-width: 560px;
+            width: 100%;
+        }
+
+        .company-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #eef3fc;
+            padding: 0.35rem 1.2rem;
+            border-radius: 60px;
+            margin-bottom: 1.5rem;
+        }
+
+        .company-tag i {
+            color: #1a6c99;
+            font-size: 0.8rem;
+        }
+
+        .company-tag span {
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: #165a7e;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 1.2rem;
+            color: #0a2f42;
+        }
+
+        .blue-highlight {
+            color: #1a6c9c;
+            border-bottom: 2px solid #ffcf7a;
+        }
+
+        .paragraph {
+            font-size: 0.95rem;
+            line-height: 1.55;
+            color: #1f4055;
+            margin-bottom: 1rem;
+        }
+
+        .paragraph strong {
+            color: #0b5379;
+        }
+
+        .pill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin: 1.2rem 0 1.6rem;
+        }
+
+        .pill {
+            background: #f0f6fd;
+            padding: 0.35rem 1rem;
+            border-radius: 40px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #1f618b;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn {
+            background: #0b2f41;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: #0c4a6b;
+            gap: 14px;
+            transform: translateY(-2px);
+        }
+
+        .footer-note {
+            margin-top: 1.8rem;
+            border-top: 1px solid #e6ecf2;
+            padding-top: 1rem;
+            font-size: 0.7rem;
+            color: #5c7f9a;
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        /* RESPONSIVO: quando a tela for pequena, cada div ocupa 100% */
+        @media (max-width: 800px) {
+            .split-50 {
+                flex-direction: column;
+                padding-top: 70px;
+            }
+            .image-fifty, .text-fifty {
+                width: 100%;
+                flex: auto;
+                min-height: auto;
+            }
+            .image-fifty {
+                min-height: 400px;
+            }
+            h1 {
+                font-size: 1.7rem;
+            }
+            .navbar {
+                padding: 0.7rem 1.5rem;
+            }
+            .nav-links {
+                position: fixed;
+                top: 65px;
+                left: -100%;
+                width: 70%;
+                height: calc(100vh - 65px);
+                background: rgba(10, 37, 55, 0.95);
+                backdrop-filter: blur(16px);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 2rem;
+                transition: left 0.3s ease;
+                gap: 1.5rem;
+                border-radius: 0 20px 20px 0;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .menu-icon {
+                display: flex;
+            }
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            .logo span {
+                font-size: 0.65rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =========================================== -->
+    <!-- NAVBAR TRANSLÚCIDO (ADICIONADO SEM REMOVER NADA) -->
+    <!-- =========================================== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>INFINITY</h1>
+                <span>Consultoria & Assessoria</span>
+            </div>
+
+            <div class="menu-icon" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#"><i class="fas fa-home"></i> Início</a>
+                <a href="#"><i class="fas fa-users"></i> Clientes conexos</a>
+                <a href="#"><i class="fas fa-chart-line"></i> Serviços</a>
+                <a href="#"><i class="fas fa-map-marker-alt"></i> Localização</a>
+                <a href="#" class="btn-contato-nav"><i class="fas fa-envelope"></i> Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- =========================================== -->
+    <!-- SEU LAYOUT ORIGINAL 50% IMAGEM + 50% TEXTO -->
+    <!-- =========================================== -->
+    <div class="split-50">
+        <!-- DIV DA IMAGEM: 50% DE QUALQUER TELA -->
+        <div class="image-fifty">
+            <div class="image-content">
+                <div class="icon-circle">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="bars">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                    <div class="bar4"></div>
+                    <div class="bar5"></div>
+                </div>
+                <div class="image-tag">
+                    <i class="fas fa-rotate-right"></i> RECUPERAÇÃO DE CRÉDITO 360°
+                </div>
+                <div class="infinity-symbol">
+                    <i class="fas fa-infinity"></i>
+                </div>
+                <div class="img-badge">
+                    <i class="fas fa-medal"></i> 20+ ANOS DE EXCELÊNCIA
+                </div>
+                <div style="margin-top: 1rem; font-size: 0.7rem; color: #9cbfdc;">
+                    <i class="fas fa-handshake"></i> Equipe capacitada + parceiros especialistas
+                </div>
+            </div>
+        </div>
+
+        <!-- DIV DO TEXTO: 50% DE QUALQUER TELA -->
+        <div class="text-fifty">
+            <div class="text-content">
+                <div class="company-tag">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Infinity Consultoria e Assessoria</span>
+                </div>
+                <h1>
+                    <span class="blue-highlight">RECUPERAÇÃO DE CRÉDITO FINANCEIRO</span><br>
+                    com credibilidade no mercado
+                </h1>
+                <div class="paragraph">
+                    Somos uma <strong>renomada empresa no setor de Consultoria e Assessoria</strong> especializada em 
+                    <strong>RECUPERAÇÃO DE CRÉDITO FINANCEIRO</strong> no território brasileiro. Ao longo de duas décadas, 
+                    temos consolidado nossa presença nacional, contando com uma equipe de profissionais altamente capacitados 
+                    e uma rede de parceiros especialistas. Nosso compromisso é auxiliar tanto indivíduos quanto empresas na 
+                    reabilitação de sua credibilidade no mercado.
+                </div>
+                <div class="paragraph">
+                    Com um histórico que abrange mais de <strong>20 anos de atuação</strong>, nossa empresa tem se dedicado 
+                    incansavelmente a fornecer <strong>soluções financeiras perspicazes</strong>. Concentramos nossa expertise 
+                    na esfera dos <strong>direitos do consumidor</strong>, direcionando nossos esforços para abordar desafios 
+                    relacionados ao endividamento bancário e à obtenção de <strong>Crédito Empresarial</strong>.
+                </div>
+                <div class="paragraph">
+                    Por meio da aplicação de nossa <strong>metodologia exclusiva</strong> e da realização de análises abrangentes 
+                    de <strong>360 graus</strong>, garantimos resultados precisos e eficazes. Esses resultados se traduzem no 
+                    alcance de nosso objetivo primordial: preparar nossos clientes para que possam acessar o crédito de forma 
+                    bem-sucedida no futuro.
+                </div>
+                <div class="paragraph">
+                    Nossa <strong>proficiência inigualável</strong> é um testemunho de nossa dedicação e conhecimento no campo. 
+                    Cada passo que damos é impulsionado pela nossa paixão pelo que fazemos e pela busca contínua da excelência.
+                </div>
+
+                <div class="pill-list">
+                    <span class="pill"><i class="fas fa-chart-pie"></i> Análise 360°</span>
+                    <span class="pill"><i class="fas fa-building"></i> Crédito Empresarial</span>
+                    <span class="pill"><i class="fas fa-gavel"></i> Direitos do consumidor</span>
+                    <span class="pill"><i class="fas fa-bullseye"></i> Metodologia Exclusiva</span>
+                </div>
+
+                <button class="btn" id="btnAction">
+                    <i class="fas fa-shield-alt"></i> Restaurar credibilidade
+                </button>
+
+                <div class="footer-note">
+                    <span><i class="fas fa-check-circle"></i> Resultados precisos e eficazes</span>
+                    <span><i class="fas fa-chart-line"></i> Acesso ao crédito com sucesso</span>
+                    <span><i class="fas fa-globe"></i> Atuação nacional</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // MENU MOBILE
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Efeito de rolagem no navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 10) {
+                navbar.style.background = 'rgba(10, 37, 55, 0.8)';
+                navbar.style.backdropFilter = 'blur(16px)';
+            } else {
+                navbar.style.background = 'rgba(10, 37, 55, 0.65)';
+                navbar.style.backdropFilter = 'blur(12px)';
+            }
+        });
+
+        // BOTÃO DE AÇÃO
+        (function() {
+            const btn = document.getElementById('btnAction');
+            if(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const original = btn.innerHTML;
+                    btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Conectando especialistas...';
+                    btn.style.opacity = '0.8';
+                    setTimeout(() => {
+                        btn.innerHTML = original;
+                        btn.style.opacity = '1';
+                        const toast = document.createElement('div');
+                        toast.innerText = '✓ Especialista em recuperação de crédito acionado. Em breve retornaremos.';
+                        toast.style.position = 'fixed';
+                        toast.style.bottom = '20px';
+                        toast.style.left = '20px';
+                        toast.style.backgroundColor = '#0b2f41';
+                        toast.style.color = '#fff';
+                        toast.style.padding = '10px 18px';
+                        toast.style.borderRadius = '40px';
+                        toast.style.fontSize = '0.75rem';
+                        toast.style.fontWeight = '500';
+                        toast.style.zIndex = '999';
+                        toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+                        document.body.appendChild(toast);
+                        setTimeout(() => {
+                            toast.style.opacity = '0';
+                            setTimeout(() => toast.remove(), 400);
+                        }, 2800);
+                    }, 700);
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

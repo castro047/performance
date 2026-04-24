@@ -1,0 +1,271 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #ecf3f8 0%, #e2e9f0 100%);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        /* LAYOUT PRINCIPAL: DOIS LADOS IGUAIS (50% / 50%) */
+        .split-exact {
+            display: flex;
+            max-width: 1360px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 2rem;
+            box-shadow: 0 30px 55px -20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        /* Lado da IMAGEM (mesmo tamanho que o lado do texto) */
+        .image-panel {
+            flex: 1;
+            background: linear-gradient(125deg, #072336 0%, #0A2F44 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .image-content {
+            text-align: center;
+            width: 100%;
+            max-width: 380px;
+            margin: 0 auto;
+        }
+
+        /* Elemento decorativo gráfico (imagem conceitual) */
+        .icon-badge {
+            background: rgba(255, 255, 255, 0.05);
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.6rem auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .icon-badge i {
+            font-size: 4rem;
+            color: #9bc6e5;
+        }
+
+        .graphic-bars {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: 1.8rem 0 1rem;
+        }
+
+        .graphic-bars span {
+            width: 12px;
+            background: #2879a5;
+            border-radius: 30px;
+            transition: all 0.2s;
+        }
+
+        .bar1 { height: 32px; }
+        .bar2 { height: 58px; background: #409bcb; }
+        .bar3 { height: 80px; background: #60b5e0; }
+        .bar4 { height: 52px; background: #409bcb; }
+        .bar5 { height: 28px; }
+
+        .image-title {
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: #bcd8f0;
+            text-transform: uppercase;
+            margin: 1rem 0 0.8rem;
+        }
+
+        .infinity-sign {
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, 0.15);
+            margin-top: 1rem;
+        }
+
+        .trust-tag {
+            background: rgba(255, 235, 205, 0.12);
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #FFD966;
+            margin-top: 1.4rem;
+        }
+
+        /* Lado do TEXTO (exatamente o conteúdo original fornecido) */
+        .text-panel {
+            flex: 1;
+            padding: 2.8rem 2.5rem;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .company-header {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #ecf5fc;
+            padding: 0.3rem 1.2rem 0.3rem 1rem;
+            border-radius: 60px;
+            width: fit-content;
+            margin-bottom: 1.6rem;
+        }
+
+        .company-header i {
+            color: #1b6b9c;
+            font-size: 0.9rem;
+        }
+
+        .company-header span {
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: #154f71;
+            letter-spacing: -0.2px;
+        }
+
+        h1 {
+            font-size: 2.1rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 1.2rem;
+            color: #0B2C3F;
+        }
+
+        .highlight-blue {
+            color: #166e9e;
+            border-bottom: 2px solid #fdcd89;
+        }
+
+        .original-text {
+            font-size: 0.95rem;
+            line-height: 1.55;
+            color: #1F3B4C;
+            margin-bottom: 1rem;
+        }
+
+        .original-text strong {
+            color: #0B4F72;
+            font-weight: 700;
+        }
+
+        .metodologia-badge {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin: 1.2rem 0 1.6rem;
+        }
+
+        .pill {
+            background: #f0f6fe;
+            padding: 0.35rem 1rem;
+            border-radius: 40px;
+            font-size: 0.73rem;
+            font-weight: 600;
+            color: #1f618d;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pill i {
+            font-size: 0.7rem;
+        }
+
+        .btn-saiba {
+            background: #0A2D3F;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            width: fit-content;
+            transition: all 0.2s ease;
+            margin-top: 0.2rem;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+        }
+
+        .btn-saiba:hover {
+            background: #0C405A;
+            gap: 14px;
+            transform: translateY(-2px);
+        }
+
+        .footer-meta {
+            margin-top: 2rem;
+            border-top: 1px solid #e8eef3;
+            padding-top: 1rem;
+            font-size: 0.7rem;
+            color: #5f7f9a;
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-meta i {
+            margin-right: 4px;
+        }
+
+        /* RESPONSIVO: em telas menores, cada um ocupa 100% (empilhados) mas mantem proporção visual */
+        @media (max-width: 900px) {
+            .split-exact {
+                flex-direction: column;
+            }
+            body {
+                padding: 1rem;
+            }
+            .text-panel {
+                padding: 2rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .image-panel {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            .original-text {
+                font-size: 0.85rem;
+            }
+            .text-panel {
+                padding: 1.6rem;
+            }
+        }
+
+        /* animação suave */
+        @keyframes fadeSlide {
+            0% { opacity: 0; transform: translateY(6px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .image-panel, .text-panel {
+            animation: fadeSlide 0.55s ease-out forwards;
+        }
